@@ -31,51 +31,7 @@ int max_subarray(int a[],int low, int high){
   }
 }
 
-//分治法计算x的n次幂，将O(n)降为O(logn)
-long npower(int x,int n){
-  long result;
-  if(n==1) result=x;
-  else{
-    if(n%2==0){
-      int temp=npower(x,n/2);
-      result=temp*temp;
-    }
-    else {
-      int temp=npower(x,(n-1)/2);
-      result=temp*temp*x;
-    }
-}
-  return result;
-}
-void swap(int a[],int m, int n){
-  int temp=a[m];
-  a[m]=a[n];
-  a[n]=temp;
-}
-int partition(int a[],int low, int high){
-     int left=low;
-     int right=high;
-     while (left<right) {
-       while(a[left]<=a[low]) left++;
-       while(a[right]>a[low])  right--;
-       if(left<right){
-       swap(a,left,right);cout<<left<<"left"<<right<<"right"<<"\n";
-     }
 
-   }
-   swap(a,low,right);
-   return right;
-
-}
-
-void quicksort(int a[],int low, int high){
-
-  if(low<high){
-    int mid=partition(a,low,high);//cout<<mid;
-    quicksort(a,low,mid-1);
-    quicksort(a,mid+1,high);
-  }
-}
 int main(){
 
   int a[]={12,11,10,9,8,7,6,5,4,9,9,9};
